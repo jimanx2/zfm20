@@ -60,6 +60,8 @@ var serialPort 	= require('serialport'),
 	FINGERPRINT_TIMEOUT 			= 0xFF,
 	FINGERPRINT_BADPACKET 			= 0xFE,
 	FINGERPRINT_GETIMAGE 			= 0x01,
+	FINGERPRINT_DOWNLOADIMAGE 		= 0x0A,
+	FINGERPRINT_UPLOADIMAGE 		= 0x0B,
 	FINGERPRINT_IMAGE2TZ 			= 0x02,
 	FINGERPRINT_REGMODEL 			= 0x05,
 	FINGERPRINT_STORE 				= 0x06,
@@ -409,6 +411,14 @@ Sensorfp.prototype.getImage = function () {
   	writePacket(theAddress, FINGERPRINT_COMMANDPACKET, 3, packet);
   	new onReply(result, packet);
   	return result;
+};
+
+Sensorfp.prototype.downloadImage = function(){
+	var packet 	= [FINGERPRINT_DOWNLOADIMAGE],
+		result	= new Result();
+	writePacket(theAddress, FINGERPRINT_COMMANDPACKET, packet.length + 2, packet);
+	new onReply(result, packet);
+	return result;
 };
 
 Sensorfp.prototype.image2Tz = function (slot) {
