@@ -371,7 +371,7 @@ function evaluateCode (code, onok, repeat, onfail) {
 
 function onReply (result, packet, onok, timeout) {
 	var reply 	= new Buffer([]);
-	timeout = timeout || 500;
+	timeout = timeout || 600;
 	setTimeout(function(){
 		if(reply.length == 0){
 			return result.fail(FINGERPRINT_TIMEOUT, "Timeout receiving packet "+timeout);
