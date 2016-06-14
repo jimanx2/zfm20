@@ -367,7 +367,7 @@ function evaluateCode (code, onok, repeat, onfail) {
 	      	break;
 	}
 };
-
+Sensorfp.prototype.evaluateCode = evaluateCode;
 
 function onReply (result, packet, onok, timeout) {
 	var reply 	= new Buffer([]);
